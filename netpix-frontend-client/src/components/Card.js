@@ -6,18 +6,20 @@ export default class Card extends Component {
         console.log("I got called");
         const { title, overview, runtime, release_date, src, image_src } = this.props.movie
         return (
-            // <div className="title-card">
+            <a className="carousel-item"><img src={image_src} weight="200" height="120" /></a>
+            // <div className="item">
+            //     <img src={image_src} alt={`Image of ${title}`} />
             //     <h2>{title}</h2>
-            <li>
-                <div className="bg-img">
-                    <img className="background-image" src={image_src} />
-                </div>
-                <a href="#">
-                    <div className="content">
-                        <h2>{title}</h2>
-                    </div>
-                </a>
-            </li>
+            // </div>
+            // <div >
+            //     <div className="bg-img">
+            //     </div>
+            //     <a href="#">
+            //         <div className="content">
+            //             <h2>{title}</h2>
+            //         </div>
+            //     </a>
+            // </div>
         )
     }
 }
