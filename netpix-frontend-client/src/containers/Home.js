@@ -1,8 +1,10 @@
-import React, { Component, useState, useEffect } from "react"
-// import Card from "../components/Card"
-// import "../components/card.scss"
+import React, {Component, useState, useEffect} from "react"
+import Card from "../components/Card"
+import ItemsCarousel from "react-items-carousel"
 import CardDetails from "../components/CardDetails"
+import Hilight from "../components/Hilight"
 import CallItemsCarousel, { } from "./CallItemsCarousel";
+
 
 const BASE_URL = "http://localhost:3000/"
 const GET_MOVIES = `${BASE_URL}movies/`
@@ -10,7 +12,6 @@ const USER_MOVIES = `${BASE_URL}userMovies/`
 
 
 export default function Home() {
-
   const [movies, setMovies] = useState([])
   const [cardDetails, setCardDetails] = useState(false)
   const [myMovies, setMyMovies] = useState([])
@@ -21,6 +22,7 @@ export default function Home() {
     const movies = await res.json()
     setMovies(movies)
   }
+
 
   //gets the movies anytime anything changes
   useEffect(() => fetchData(), [])
@@ -51,6 +53,8 @@ export default function Home() {
   const getMovie = () => movies.find(movie => movie.id == cardDetails)
 
 
+  const getMovie = () => movies.find((movie) => movie.id == cardDetails)
+
 
   return (
     <div>
@@ -65,16 +69,5 @@ export default function Home() {
         <CardDetails movie={getMovie()} setCardDetails={setCardDetails} setMyMovies={setMyMovies} myMovies={myMovies} />
       }
     </div>
-
-
-
-    // <div>
-    //   {/* Highlight */}
-    //   {/* <div className="flix-container"> */}
-    //   <div className="carousel">
-
-    //   </div>
-    //   {/* </div> */}
-    // </div>
   )
 }

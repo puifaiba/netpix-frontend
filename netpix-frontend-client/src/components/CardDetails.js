@@ -1,10 +1,7 @@
 import React from "react"
-import Card from "./Card";
-import "../../node_modules/video-react/dist/video-react.css"; // import css
-// import { Player } from 'video-react';
-import YoutubeEmbed, { } from "./YouTubeEmbed";
-
-
+import Card from "./Card"
+import "../../node_modules/video-react/dist/video-react.css" // import css
+import YoutubeEmbed from "./YouTubeEmbed"
 
 const CardDetails = ({ movie: { id, title, overview, runtime, release_date, src }, setCardDetails, setMyMovies, myMovies }) => {
     const ADD_MOVIE = "http://localhost:3000/addMovie"
@@ -54,7 +51,7 @@ const CardDetails = ({ movie: { id, title, overview, runtime, release_date, src 
             body: JSON.stringify({ user: item }),
             method: "POST"
         }
-        //make a fetch to REMOVE_MOVIE adn update the frontend
+        //make a fetch to REMOVE_MOVIE and update the frontend
         fetch(REMOVE_MOVIE, request).then(res => res.json())
             .then(res => removeMyMovies(res.movie_id))
             .catch(error => console.log(error.message))
