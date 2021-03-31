@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  height: 100vh;
+  width: 100vw;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -7,27 +9,112 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} */
 
 .scroll {
   overflow-x: scroll;
 }
+a {
+  color: rgb(122, 46, 46);
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: black;
+  height: 100px;
+  font-family: "Trebuchet MS", "Helvetica", "Arial", "sans-serif";
+  color: rgb(122, 46, 46);
+  font-size: 20px;
+  padding-top: 40px;
+  padding-left: 120px;
+  background-image: url("./images/NETPIXlogo.png");
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: 10px 0;
+}
 
 .landing-page {
-  background-image: "../public/images/movie-theater.jpg";
+  display: block;
+  height: 100vh;
+  padding: 300px 20px;
+  background: url("./images/theater.jpg");
+  background-size: contain;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  color: rgb(221, 205, 205);
+  font-size: 30px;
+}
+
+.homepage {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  padding: 10px;
+}
+
+.row-text {
+  background-color: black;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  color: rgb(221, 205, 205);
+  padding-left: 25px;
+  font-size: 25px;
 }
 
 .card {
+  display: auto;
   background-size: contain;
   background-repeat: no-repeat;
   height: 210px;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  color: rgb(221, 205, 205);
+  font-size: 20px;
+  font-weight: bold;
   text-indent: 10px;
+  padding-top: 15px;
+  transition: 1s transform;
+  -webkit-transition: 1s -webkit-transform;
+  transform-origin: 0px 0px;
+  -webkit-transform-origin: 0px 0px;
+  backface-visibility: hidden;
+}
+
+.card:hover {
+  height: 420px;
+  transform: scale(2);
+  -webkit-transform: scale(2);
+}
+
+.card-details {
+  font-size: 12px;
+  color: rgb(221, 205, 205);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.hilight {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  color: rgb(221, 205, 205);
 }
 
 .background-image {
-  background-size: cover;
-  background-repeat: no-repeat;
+  max-width: 100%;
+  height: auto;
+}
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }

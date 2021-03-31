@@ -1,14 +1,13 @@
-import React, { Component, useState } from "react"
+import React, {Component, useState} from "react"
 import Card from "../components/Card"
-import "../components/card.scss"
 import ItemsCarousel from "react-items-carousel"
 import CardDetails from "../components/CardDetails"
+import Hilight from "../components/Hilight"
 
 const BASE_URL = "http://localhost:3000/"
 const GET_MOVIES = `${BASE_URL}movies/`
 
 export default function Home() {
-
   const [movies, setMovies] = useState([])
   const [cardDetails, setCardDetails] = useState(false)
 
@@ -18,21 +17,25 @@ export default function Home() {
     setMovies(movies)
   }
 
-  const setMovie = (id) => {
-    // console.log(id)
-    setCardDetails(id)
-  }
+  //called by Card when on a click event
+  const setMovie = (id) => setCardDetails(id)
 
-  const getMovie = () => movies.find(movie => movie.id == cardDetails)
-
+  const getMovie = () => movies.find((movie) => movie.id == cardDetails)
 
   fetchData()
   const [activeItemIndex, setActiveItemIndex] = useState(0)
   const chevronWidth = 40
   return (
-    <div>
-      {cardDetails === false ?
-        <div style={{ padding: 0, maxWidth: "100%", margin: "0" }}>
+    <div className="homepage">
+      <div>
+        <Hilight />
+      </div>
+      {cardDetails === false ? (
+        <div
+          className="row"
+          style={{padding: 0, maxWidth: "100%", margin: "0"}}
+        >
+          <h3 className="row-text">Now Playing</h3>
           <ItemsCarousel
             infiniteLoop={false}
             gutter={12}
@@ -55,20 +58,9 @@ export default function Home() {
             ))}
           </ItemsCarousel>
         </div>
-        :
-        <CardDetails movie={getMovie()} />
-      }
+      ) : (
+        <CardDetails movie={getMovie()} setCardDetails={setCardDetails} />
+      )}
     </div>
-
-
-
-    // <div>
-    //   {/* Highlight */}
-    //   {/* <div className="flix-container"> */}
-    //   <div className="carousel">
-
-    //   </div>
-    //   {/* </div> */}
-    // </div>
   )
 }
