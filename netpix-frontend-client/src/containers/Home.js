@@ -1,60 +1,68 @@
-import React, { Component, useState } from "react"
-import Card from "../components/Card"
+import React, { Component, useState, useEffect } from "react"
+// import Card from "../components/Card"
 // import "../components/card.scss"
-import ItemsCarousel from "react-items-carousel"
 import CardDetails from "../components/CardDetails"
+import CallItemsCarousel, { } from "./CallItemsCarousel";
 
 const BASE_URL = "http://localhost:3000/"
 const GET_MOVIES = `${BASE_URL}movies/`
+const USER_MOVIES = `${BASE_URL}userMovies/`
+
 
 export default function Home() {
 
   const [movies, setMovies] = useState([])
   const [cardDetails, setCardDetails] = useState(false)
+  const [myMovies, setMyMovies] = useState([])
 
+  //gets all movies
   const fetchData = async () => {
     const res = await fetch(GET_MOVIES)
     const movies = await res.json()
     setMovies(movies)
   }
 
-  //called by Card when on a click event
+  //gets the movies anytime anything changes
+  useEffect(() => fetchData(), [])
+
+  //gets movies in the user's list
+  const getMyMovies = async () => {
+    try {
+      const res = await fetch(USER_MOVIES + (+localStorage.getItem("user_id")))
+      const movies_id = await res.json()
+      setMyMovies(movies_id)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+  //gets the user's list anytime anything changes
+  useEffect(() => getMyMovies(), [])
+
+
+  //returns an array of the user's movies from the current list
+  const findMyMovies = () => movies.filter(movie => myMovies.includes(movie.id))
+  // console.log(findMyMovies())
+
+
+  //called by Card on a click event
   const setMovie = (id) => setCardDetails(id)
 
+  //gets the movie to be rendered
   const getMovie = () => movies.find(movie => movie.id == cardDetails)
 
 
-  fetchData()
-  const [activeItemIndex, setActiveItemIndex] = useState(0)
-  const chevronWidth = 40
+
   return (
     <div>
       {cardDetails === false ?
-        <div style={{ padding: 0, maxWidth: "100%", margin: "0" }}>
-          <ItemsCarousel
-            infiniteLoop={false}
-            gutter={12}
-            activePosition={"center"}
-            chevronWidth={60}
-            disableSwipe={false}
-            alwaysShowChevrons={false}
-            numberOfCards={5}
-            slidesToScroll={4}
-            outsideChevron={false}
-            showSlither={false}
-            firstAndLastGutter={true}
-            activeItemIndex={activeItemIndex}
-            requestToChangeActive={(value) => setActiveItemIndex(value)}
-            rightChevron={">"}
-            leftChevron={"<"}
-          >
-            {movies.map((movie) => (
-              <Card movie={movie} setMovie={setMovie} />
-            ))}
-          </ItemsCarousel>
+        <div>
+          <h3>My list</h3>
+          <CallItemsCarousel movies={findMyMovies()} setMovie={setMovie} />
+          <h3>All Movies</h3>
+          <CallItemsCarousel movies={movies} setMovie={setMovie} />
         </div>
         :
-        <CardDetails movie={getMovie()} setCardDetails={setCardDetails} />
+        <CardDetails movie={getMovie()} setCardDetails={setCardDetails} setMyMovies={setMyMovies} myMovies={myMovies} />
       }
     </div>
 
