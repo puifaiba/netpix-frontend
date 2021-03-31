@@ -1,6 +1,6 @@
-import React, { Component, useState, useEffect } from "react"
-import Card from "../components/Card"
-import ItemsCarousel from "react-items-carousel"
+import React, { useState, useEffect } from "react"
+// import Card from "../components/Card"
+// import ItemsCarousel from "react-items-carousel"
 import CardDetails from "../components/CardDetails"
 import Hilight from "../components/Hilight"
 import CallItemsCarousel, { } from "./CallItemsCarousel";
@@ -52,6 +52,9 @@ export default function Home() {
   //gets the movie to be rendered
   const getMovie = () => movies.find(movie => movie.id == cardDetails)
 
+  //gets random number between 0 and the length of the movies array
+  const getRandom = () => Math.floor(Math.random() * movies.length)
+  // console.log(getRandom());
 
   return (
     <div className="homepage">

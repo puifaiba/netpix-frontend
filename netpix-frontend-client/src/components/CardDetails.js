@@ -1,5 +1,5 @@
 import React from "react"
-import Card from "./Card"
+// import Card from "./Card"
 import "../../node_modules/video-react/dist/video-react.css" // import css
 import YoutubeEmbed from "./YouTubeEmbed"
 
@@ -62,15 +62,6 @@ const CardDetails = ({ movie: { id, title, overview, runtime, release_date, src 
             <YoutubeEmbed embedId={src} />
             <div className="contents">
                 <h2>{title}</h2>
-                <p>
-                    {overview}
-                    <br />
-                    Released on: {release_date}
-                </p>
-                <strong>
-                    {runtime}
-                </strong>
-                <br />
                 <button
                     className="cardDetail-button"
                     onClick={() =>

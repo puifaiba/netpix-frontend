@@ -1,4 +1,5 @@
-import React, {Component} from "react"
+import React, { Component } from "react"
+import YoutubeEmbed from "./YouTubeEmbed"
 
 const Hilight = () => {
   return <div className="hilight"></div>

@@ -1,11 +1,10 @@
-
-import React, {Component, useState} from "react"
+import React, { useState } from "react"
 
 function Card({
-  movie: {id, title, image_src, overview, runtime, release_date},
+  movie: { id, title, image_src, overview, runtime, release_date },
   setMovie,
 }) {
-  const [details, setDetails] = useState(false)
+  // const [details, setDetails] = useState(false)
   const [isShown, setIsShown] = useState(false)
 
   return (
