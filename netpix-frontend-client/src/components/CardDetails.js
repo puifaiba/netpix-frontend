@@ -1,57 +1,42 @@
 import React from "react"
 import Card from "./Card";
 import "../../node_modules/video-react/dist/video-react.css"; // import css
-import { Player } from 'video-react';
+// import { Player } from 'video-react';
+import YoutubeEmbed, { } from "./YouTubeEmbed";
 
 
-const CardDetails = ({ movie: { title, overview, runtime, release_date, src, image_src } }) => {
 
-    // const playMovie = () => {
-    //     return (
-
-
-    //     )
-    // }
+const CardDetails = ({ movie: { title, overview, runtime, release_date, src }, setCardDetails }) => {
 
     return (
         <div className="cardDetails">
-            {/* <Player
-                playsInline
-                poster={image_src}
-                src="https://www.youtube.com/watch?v=vM-Bja2Gy04"
-            /> */}
-            <Player>
-                <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
-            </Player>
-            {/* <img
-                alt={`cover image of ${title}`}
-                src={image_src}
-                className="background-image"
-            /> */}
+            <YoutubeEmbed embedId={src} />
             <div className="contents">
                 <h2>{title}</h2>
                 <p>
                     {overview}
+                    <br />
+                    Released on: {release_date}
                 </p>
                 <strong>
                     {runtime}
                 </strong>
                 <br />
                 <button
-                    className="ui button fluid"
+                    className="cardDetail-button"
                     onClick={() =>
-                        (console.log("I was called"))
+                        (setCardDetails(false))
                     }
                 >
                     Go Back
                 </button>
                 <button
-                    className="ui button fluid"
+                    className="cardDetail-button"
                     onClick={() =>
-                        (console.log("play, niveiehr"))
+                        (console.log("add to my list"))
                     }
                 >
-                    Play movie
+                    Add to my list
                 </button>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react"
 import Card from "../components/Card"
-import "../components/card.scss"
+// import "../components/card.scss"
 import ItemsCarousel from "react-items-carousel"
 import CardDetails from "../components/CardDetails"
 
@@ -18,10 +18,8 @@ export default function Home() {
     setMovies(movies)
   }
 
-  const setMovie = (id) => {
-    // console.log(id)
-    setCardDetails(id)
-  }
+  //called by Card when on a click event
+  const setMovie = (id) => setCardDetails(id)
 
   const getMovie = () => movies.find(movie => movie.id == cardDetails)
 
@@ -56,7 +54,7 @@ export default function Home() {
           </ItemsCarousel>
         </div>
         :
-        <CardDetails movie={getMovie()} />
+        <CardDetails movie={getMovie()} setCardDetails={setCardDetails} />
       }
     </div>
 

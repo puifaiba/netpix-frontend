@@ -1,27 +1,14 @@
 import React, { Component, useState } from "react"
-import "./card.scss"
+// import "./card.scss"
 
 
-function Card({ movie: { id, title, overview, runtime, release_date, src, image_src }, setMovie }) {
-  const [details, setDetails] = useState(false)
-
-  const additionalDetails = () => {
-    if (details) {
-      return (
-        <div>
-          {overview}
-          {runtime}
-          {release_date}
-        </div>
-      )
-    }
-  }
+function Card({ movie: { id, title, image_src }, setMovie }) {
 
   return (
-    <div className="card" onClick={e => setMovie(id)} style={{
+    <div className="card" onClick={_ => setMovie(id)} style={{
       backgroundImage: `url(${image_src})`,
-    }}> {title}
-      {additionalDetails()}
+    }}>
+      {title}
     </div >
   )
 }
