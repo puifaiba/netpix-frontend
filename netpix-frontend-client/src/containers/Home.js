@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from "react"
+import React, { Component, useState, useEffect } from "react"
 import Card from "../components/Card"
 import ItemsCarousel from "react-items-carousel"
 import CardDetails from "../components/CardDetails"
@@ -53,16 +53,13 @@ export default function Home() {
   const getMovie = () => movies.find(movie => movie.id == cardDetails)
 
 
-  const getMovie = () => movies.find((movie) => movie.id == cardDetails)
-
-
   return (
-    <div>
+    <div className="homepage">
       {cardDetails === false ?
         <div>
-          <h3>My list</h3>
+          <h3 className="row-text">My list</h3>
           <CallItemsCarousel movies={findMyMovies()} setMovie={setMovie} />
-          <h3>All Movies</h3>
+          <h3 className="row-text">Now Playing</h3>
           <CallItemsCarousel movies={movies} setMovie={setMovie} />
         </div>
         :
