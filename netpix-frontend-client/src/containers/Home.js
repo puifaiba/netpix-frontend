@@ -53,13 +53,18 @@ export default function Home() {
   const getMovie = () => movies.find(movie => movie.id == cardDetails)
 
   //gets random number between 0 and the length of the movies array
-  const getRandom = () => Math.floor(Math.random() * movies.length)
-  // console.log(getRandom());
+  const getRandomMovie = () => {
+    let randomNum = Math.floor(Math.random() * movies.length)
+    return movies[randomNum]
+  }
+
+
 
   return (
     <div className="homepage">
       {cardDetails === false ?
         <div>
+          {/* <Hilight className="hilight" movie={getRandomMovie()} /> */}
           <h3 className="row-text">My list</h3>
           <CallItemsCarousel movies={findMyMovies()} setMovie={setMovie} />
           <h3 className="row-text">Now Playing</h3>

@@ -156,6 +156,24 @@ input[type="password"] {
 .hilight {
   font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
   color: rgb(221, 205, 205);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.hilight .video-responsive {
+  overflow: hidden;
+  position: absolute;
+  height: 0;
+}
+
+.hilight .video-responsive iframe {
+  display: block;
+  margin: auto;
+  left: 0;
+  top: 0;
+  height: 70%;
+  width: 70%;
+  position: absolute;
 }
 
 .login-form {
@@ -166,21 +184,6 @@ input[type="password"] {
 .background-image {
   max-width: 100%;
   height: auto;
-}
-
-.video-responsive {
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-  height: 0;
-}
-
-.video-responsive iframe {
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  position: absolute;
 }
 
 .video-responsive {

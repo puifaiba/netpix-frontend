@@ -12,7 +12,7 @@ const YoutubeEmbed = ({ embedId }) => (
             allowFullScreen
             title="Embedded youtube"
         />
-    </div>
+    </div >
 );
 
 YoutubeEmbed.propTypes = {
